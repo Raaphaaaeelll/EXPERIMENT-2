@@ -1,0 +1,57 @@
+Write a program that computes a customer’s water bill. The bill includes a P35 water demand
+charge plus a consumption(use) charge of P1.10 for every gallon used. Consumption is figured from meter
+readings in gallons taken recently and during the previous month. If the customer’s unpaid balance is
+greater than 0, a P20 late charge is assessed as well.
+
+#include <iostream>
+using namespace std;
+
+int main()
+
+{
+	int gallons;
+
+	cout << "Enter the gallon of water consumed based on the meter reading: "; 
+	cin >> gallons;
+	
+	if (gallons < 0)
+		{
+			cout << "Invalid amount! Please run the program again and enter a valid value to proceed to payment."; 
+		}
+	else
+	
+		{
+			float DemandCharge = 35, ConsumptionCharge = 1.10, TotalCharge = DemandCharge + (ConsumptionCharge * gallons), TotalLateCharge = TotalCharge + 20, AmountPaid; 
+	
+			cout << "Total Charge = " << TotalCharge << endl;
+			cout << "Enter amount of payment ";
+			cin >> AmountPaid;
+	
+			if (AmountPaid < TotalCharge) 
+	
+				{
+					cout << "Your water bill costs " << TotalLateCharge << ", including an additional late charge fee of P20. Please pay proper amount: ";
+					cin >> AmountPaid;
+			
+					if (AmountPaid < TotalLateCharge) 
+	
+						{	
+							cout << "Invalid payment! Please run the program again to pay right amount." << endl; 
+						}
+				
+					else
+					
+						{	
+							cout << "Payment accepted! You have a total change of " << AmountPaid - TotalLateCharge << "." << endl;
+						}
+				}
+	
+			else
+			
+				{
+					cout << "Payment accepted! Your water bill costs " << TotalCharge << " with a total change of " << AmountPaid - TotalCharge << "." << endl; 
+				}
+		}
+		
+	return 0;
+}
